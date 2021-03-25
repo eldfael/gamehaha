@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_AttackSkill1Projectile : MonoBehaviour
+public class scr_AttackAbility1Projectile : MonoBehaviour
 {
 
     Rigidbody2D projectileRigidbody;
@@ -48,7 +48,7 @@ public class scr_AttackSkill1Projectile : MonoBehaviour
                 {
                     if (c.CompareTag("Enemy") && !hits.Contains(c.gameObject))
                     {
-                        c.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                        c.gameObject.GetComponent<Enemy>().TakeDamage(damage+Random.Range((int)(-damage*0.2f),(int)(1+damage*0.2f)));
                         hits.Add(c.gameObject);
                     }
                     if (c.CompareTag("Wall"))

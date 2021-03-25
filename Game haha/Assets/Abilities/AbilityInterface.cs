@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Skill
+public interface Ability
 {
-    void UseSkill();
+    void UseAbility();
 }
