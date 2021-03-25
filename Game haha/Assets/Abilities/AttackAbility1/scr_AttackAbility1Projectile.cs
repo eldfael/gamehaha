@@ -10,6 +10,7 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
     
     Vector2 direction;
     float damage;
+    float critChance;
 
     float speed = 80f;
     float duration = 0.25f;
@@ -48,7 +49,15 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
                 {
                     if (c.CompareTag("Enemy") && !hits.Contains(c.gameObject))
                     {
-                        c.gameObject.GetComponent<Enemy>().TakeDamage(damage+Random.Range((int)(-damage*0.2f),(int)(1+damage*0.2f)));
+                        if (Random.Range(0f, 1f) + critChance > 1)
+                        {
+                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage + (int)(damage * 0.5f), true);
+                        }
+                        else
+                        {
+                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage+Random.Range((int)(-damage*0.2f),(int)(1+damage*0.2f)), false);
+                        }
+                        
                         hits.Add(c.gameObject);
                     }
                     if (c.CompareTag("Wall"))
@@ -64,11 +73,11 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
     }
 
 
-    public void OnCreate(Vector2 _direction, float _damage)
+    public void OnCreate(Vector2 _direction, float _damage, float _critChance)
     {
         if(_direction != Vector2.zero) { direction = _direction; } else { direction = new Vector2(0, 1); }
         damage = _damage;
-
+        critChance = _critChance;
         created = true;
     }
 

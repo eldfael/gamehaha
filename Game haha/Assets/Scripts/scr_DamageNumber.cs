@@ -28,4 +28,9 @@ public class scr_DamageNumber : MonoBehaviour
     {
         GetComponent<TextMeshPro>().SetText(number.ToString());
     }
+
+    public void Crit()
+    {
+        GetComponent<TextMeshPro>().color = Color.red;
+    }
 }

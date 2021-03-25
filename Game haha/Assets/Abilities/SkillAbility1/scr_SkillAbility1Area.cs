@@ -6,10 +6,12 @@ public class scr_SkillAbility1Area : MonoBehaviour
 {
     bool created = false;
     float damage;
-    float duration = 0.25f;
-    float durationtimer = 0.25f;
+    float duration = 0.15f;
+    float durationtimer = -0.2f;
     int maxticks = 4;
     int tickcounter = 0;
+    bool active = false;
+    float critChance;
 
     ContactFilter2D filter;
     List<Collider2D> collisions = new List<Collider2D>();
@@ -20,13 +22,21 @@ public class scr_SkillAbility1Area : MonoBehaviour
         {
             if (durationtimer >= duration)
             {
+                durationtimer = 0;
+
                 if (tickcounter == maxticks)
                 {
                     Destroy(gameObject);
                 }
-                durationtimer = 0;
-                Physics2D.OverlapCollider(GetComponent<BoxCollider2D>(), filter, collisions);
+                
+                if (!active)
+                {
+                    active = true;
+                    Debug.Log("Active");
+                    GetComponent<SpriteRenderer>().color = new Color(1f,92f/255f,90f/255f,1f);
+                }
 
+                Physics2D.OverlapCollider(GetComponent<CircleCollider2D>(), filter, collisions);
                 if (collisions.Count > 0)
                 {
 
@@ -34,8 +44,15 @@ public class scr_SkillAbility1Area : MonoBehaviour
                     {
                         if (c.CompareTag("Enemy"))
                         {
-                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage + Random.Range((int)(-damage * 0.2f), (int)(1 + damage * 0.2f)));
+                            if (Random.Range(0f,1f)+critChance > 1)
+                            {
+                                c.gameObject.GetComponent<Enemy>().TakeDamage(damage + (int)(damage * 0.5f), true);
 
+                            }
+                            else
+                            {
+                                c.gameObject.GetComponent<Enemy>().TakeDamage(damage + Random.Range((int)(-damage * 0.2f), (int)(1 + damage * 0.2f)), false);
+                            }
                         }
 
                     });
@@ -53,9 +70,10 @@ public class scr_SkillAbility1Area : MonoBehaviour
         }
     }
 
-    public void OnCreate(float _damage)
+    public void OnCreate(float _damage, float _critChance)
     {
         damage = _damage;
+        critChance = _critChance;
         created = true;
     }
 }

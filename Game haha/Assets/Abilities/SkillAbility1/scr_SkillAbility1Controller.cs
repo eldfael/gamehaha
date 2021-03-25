@@ -9,7 +9,7 @@ public class scr_SkillAbility1Controller : MonoBehaviour, Ability
     scr_PlayerController playerController;
     public GameObject area;
 
-    float cooldown = 5f;
+    float cooldown = 4f;
     float cooldowntimer = 0f;
 
     private void Start()
@@ -31,7 +31,7 @@ public class scr_SkillAbility1Controller : MonoBehaviour, Ability
         {
             cooldowntimer = cooldown;
             GameObject newArea = Instantiate(area,playerController.GetMousePosition(),Quaternion.identity);
-            newArea.GetComponent<scr_SkillAbility1Area>().OnCreate(20f);
+            newArea.GetComponent<scr_SkillAbility1Area>().OnCreate(20f,playerController.GetCritChance());
 
         }
     }

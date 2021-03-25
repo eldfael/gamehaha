@@ -17,6 +17,8 @@ public class scr_PlayerController : MonoBehaviour
 
     Rigidbody2D playerRigidbody;
 
+    float critChance = 0.2f;
+
 
     void Start()
     {
@@ -64,5 +66,10 @@ public class scr_PlayerController : MonoBehaviour
     public Vector2 GetMousePosition()
     {
         return Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+    }
+
+    public float GetCritChance()
+    {
+        return critChance;
     }
 }
