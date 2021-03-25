@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class scr_CameraController : MonoBehaviour
 {
     
     Camera mainCamera;
@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
         playerActive = true; // TEMP LINE
 
         mainCamera = GetComponent<Camera>();
-        playerTransform = GameObject.Find("PlayerObject").GetComponent<Transform>();
+        playerTransform = GameObject.Find("obj_Player").GetComponent<Transform>();
     }
 
 

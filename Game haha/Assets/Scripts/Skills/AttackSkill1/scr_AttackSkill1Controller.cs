@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackSkill1 : MonoBehaviour, Skill
+public class scr_AttackSkill1Controller : MonoBehaviour, Skill
 {
-    PlayerController playerController;
+    scr_PlayerController playerController;
     public GameObject projectile;
     Vector2 mousePos;
     float cooldown;
@@ -12,7 +12,7 @@ public class AttackSkill1 : MonoBehaviour, Skill
 
     void Start()
     {
-        playerController = transform.parent.GetComponent<PlayerController>();
+        playerController = transform.parent.GetComponent<scr_PlayerController>();
         cooldown = 0.4f;
         cooldownTimer = 0.5f;
     }
@@ -42,7 +42,7 @@ public class AttackSkill1 : MonoBehaviour, Skill
                     playerController.transform.position.y + mousePos.normalized.y*0.5f),
                     Quaternion.identity);
 
-            newProjectile.GetComponent<ProjectileController>().OnCreate(mousePos.normalized);
+            newProjectile.GetComponent<scr_AttackSkill1Projectile>().OnCreate(mousePos.normalized, 10f);
             newProjectile.GetComponent<Transform>().Rotate(0, 0, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - 90f, Space.Self);
         }
     }

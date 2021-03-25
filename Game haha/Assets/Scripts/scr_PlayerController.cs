@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class scr_PlayerController : MonoBehaviour
 {
     //CONSTANTS
-    float FIXEDPLAYERSPEED = 7.0f;
+    float FIXEDPLAYERSPEED = 28.0f;
 
     //INPUT VARIABLES
     Vector2 moveDirection;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         
         //TEMP
         playerSkills = new Skill[1];
-        playerSkills[0] = transform.Find("AttackSkill1").GetComponent<Skill>();
+        playerSkills[0] = transform.Find("obj_AttackSkill1").GetComponent<Skill>();
     }
     void Update()
     {
