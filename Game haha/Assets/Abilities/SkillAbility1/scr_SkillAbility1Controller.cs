@@ -30,7 +30,18 @@ public class scr_SkillAbility1Controller : MonoBehaviour, Ability
         if (cooldowntimer <= 0)
         {
             cooldowntimer = cooldown;
-            GameObject newArea = Instantiate(area,playerController.GetMousePosition(),Quaternion.identity);
+            Vector2 newPos;
+            if (playerController.GetMousePositionFromPlayer().magnitude>24)
+            {
+                newPos = playerController.GetMousePositionFromPlayer().normalized;
+                newPos.x = Mathf.Sqrt(newPos.x * newPos.x * 576) * Mathf.Sign(newPos.x) + playerController.transform.position.x;
+                newPos.y = Mathf.Sqrt(newPos.y * newPos.y * 576) * Mathf.Sign(newPos.y) + playerController.transform.position.y;
+            }
+            else
+            {
+                newPos = playerController.GetMousePosition();
+            }
+            GameObject newArea = Instantiate(area,newPos,Quaternion.identity);
             newArea.GetComponent<scr_SkillAbility1Area>().OnCreate(20f,playerController.GetCritChance());
 
         }
