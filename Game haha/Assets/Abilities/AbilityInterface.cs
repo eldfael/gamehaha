@@ -5,4 +5,6 @@ using UnityEngine;
 public interface Ability
 {
     void UseAbility();
+
+    float GetCooldown();
 }

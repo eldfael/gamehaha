@@ -46,4 +46,9 @@ public class scr_SkillAbility1Controller : MonoBehaviour, Ability
 
         }
     }
+
+    public float GetCooldown()
+    {
+        return cooldowntimer;
+    }
 }

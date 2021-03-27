@@ -103,4 +103,8 @@ public class scr_PlayerController : MonoBehaviour
         return attackSpeed;
     }
 
+    public void AddCritChance(float critChanceChange)
+    {
+        critChance += critChanceChange;
+    }
 }

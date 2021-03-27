@@ -5,10 +5,10 @@ using UnityEngine;
 public class scr_SkillAbility2Controller : MonoBehaviour, Ability
 {
     scr_PlayerController playerController;
-    float cooldown = 10f;
+    float cooldown = 20f;
     float cooldowntimer = 0f;
 
-    float duration = 5f;
+    float duration = 7f;
     float durationtimer = 0f;
 
     void Start()
@@ -27,7 +27,14 @@ public class scr_SkillAbility2Controller : MonoBehaviour, Ability
         if (durationtimer > 0)
         {
             durationtimer -= Time.fixedDeltaTime;
-            if (durationtimer <= 0) { durationtimer = 0; playerController.AddMovementSpeed(-0.5f); playerController.AddAttackSpeed(-0.5f); Debug.Log("Speed DOWN"); }
+            if (durationtimer <= 0)
+            { 
+                durationtimer = 0; 
+                //playerController.AddMovementSpeed(-0.5f); 
+                playerController.AddAttackSpeed(-0.5f);
+                playerController.AddCritChance(-2f);
+                Debug.Log("Speed DOWN"); 
+            }
         }
     }
     public void UseAbility()
@@ -36,10 +43,15 @@ public class scr_SkillAbility2Controller : MonoBehaviour, Ability
         {
             cooldowntimer = cooldown;
             durationtimer = duration;
-            playerController.AddMovementSpeed(0.5f);
+            //playerController.AddMovementSpeed(0.5f);
             playerController.AddAttackSpeed(0.5f);
+            playerController.AddCritChance(2f);
             Debug.Log("Speed UP");
         }
+    }
+    public float GetCooldown()
+    {
+        return cooldowntimer;
     }
 
 }

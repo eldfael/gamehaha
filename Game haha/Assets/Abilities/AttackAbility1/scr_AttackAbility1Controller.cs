@@ -41,4 +41,9 @@ public class scr_AttackAbility1Controller : MonoBehaviour, Ability
             newProjectile.GetComponent<Transform>().Rotate(0, 0, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - 90f, Space.Self);
         }
     }
+
+    public float GetCooldown()
+    {
+        return cooldownTimer;
+    }
 }
