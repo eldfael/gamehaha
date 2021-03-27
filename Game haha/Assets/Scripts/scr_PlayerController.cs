@@ -11,13 +11,16 @@ public class scr_PlayerController : MonoBehaviour
     Vector2 moveDirection;
     bool attackAbility1Input;
     bool skillAbility1Input;
+    bool skillAbility2Input;
 
     //SKILLS ARRAY
     Ability[] playerAbilities;
 
     Rigidbody2D playerRigidbody;
 
+    //STATS
     float critChance = 0.2f;
+    float speedModifier = 1f;
 
 
     void Start()
@@ -25,9 +28,11 @@ public class scr_PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         
         //TEMP
-        playerAbilities = new Ability[2];
+        playerAbilities = new Ability[3];
         playerAbilities[0] = transform.Find("obj_AttackAbility1").GetComponent<Ability>();
         playerAbilities[1] = transform.Find("obj_SkillAbility1").GetComponent<Ability>();
+        playerAbilities[2] = transform.Find("obj_SkillAbility2").GetComponent<Ability>();
+
     }
     void Update()
     {
@@ -35,11 +40,12 @@ public class scr_PlayerController : MonoBehaviour
         moveDirection = new Vector2 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) ;
         attackAbility1Input = Input.GetMouseButton(0);
         skillAbility1Input = Input.GetKey(KeyCode.Q);
+        skillAbility2Input = Input.GetKey(KeyCode.Space);
     }
     private void FixedUpdate()
     {
         //PLAYER MOVEMENT
-        playerRigidbody.velocity = moveDirection.normalized * FIXEDPLAYERSPEED;
+        playerRigidbody.velocity = moveDirection.normalized * FIXEDPLAYERSPEED * speedModifier;
 
         //PLAYER ATTACKING
         if (attackAbility1Input)
@@ -51,10 +57,16 @@ public class scr_PlayerController : MonoBehaviour
 
         }
 
-        //PLAYER USING AN ABILITY
+        //PLAYER USING AN ABILITY (1)
         if (skillAbility1Input)
         {
             playerAbilities[1].UseAbility();
+        }
+
+        //PLAYER USING AN ABILITY (2)
+        if (skillAbility2Input)
+        {
+            playerAbilities[2].UseAbility();
         }
     }
 
@@ -72,4 +84,11 @@ public class scr_PlayerController : MonoBehaviour
     {
         return critChance;
     }
+
+    public void AddSpeed(float speedChange)
+    {
+        speedModifier += speedChange;
+    }
+
+
 }

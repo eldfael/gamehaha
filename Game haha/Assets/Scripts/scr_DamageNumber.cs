@@ -26,7 +26,7 @@ public class scr_DamageNumber : MonoBehaviour
 
     public void SetNumber(float number)
     {
-        GetComponent<TextMeshPro>().SetText(number.ToString());
+        GetComponent<TextMeshPro>().SetText(number.ToString("n0"));
     }
 
     public void Crit()

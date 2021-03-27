@@ -42,7 +42,7 @@ public class scr_SkillAbility1Controller : MonoBehaviour, Ability
                 newPos = playerController.GetMousePosition();
             }
             GameObject newArea = Instantiate(area,newPos,Quaternion.identity);
-            newArea.GetComponent<scr_SkillAbility1Area>().OnCreate(20f,playerController.GetCritChance());
+            newArea.GetComponent<scr_SkillAbility1Area>().OnCreate(15f,playerController.GetCritChance());
 
         }
     }
