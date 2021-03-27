@@ -24,9 +24,10 @@ public class scr_DamageNumber : MonoBehaviour
         if (durationtimer >= duration) { Destroy(gameObject); } else { durationtimer += Time.fixedDeltaTime; }
     }
 
-    public void SetNumber(float number)
+    public void SetNumber(float number, int order)
     {
         GetComponent<TextMeshPro>().SetText(number.ToString("n0"));
+        GetComponent<TextMeshPro>().sortingOrder = order;
     }
 
     public void Crit()
