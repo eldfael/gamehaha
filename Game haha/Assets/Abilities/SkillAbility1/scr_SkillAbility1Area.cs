@@ -16,6 +16,10 @@ public class scr_SkillAbility1Area : MonoBehaviour
     ContactFilter2D filter;
     List<Collider2D> collisions = new List<Collider2D>();
 
+    private void Start()
+    {
+        filter.useTriggers = true;
+    }
     void FixedUpdate()
     {
         if (created) 
@@ -51,7 +55,7 @@ public class scr_SkillAbility1Area : MonoBehaviour
                             }
                             else
                             {
-                                c.gameObject.GetComponent<Enemy>().TakeDamage(damage + Random.Range((int)(-damage * 0.2f), (int)(1 + damage * 0.2f)), false);
+                                c.gameObject.GetComponent<Enemy>().TakeDamage(damage + Random.Range((int)(-damage * 0.1f), (int)(1 + damage * 0.1f)), false);
                             }
                         }
 

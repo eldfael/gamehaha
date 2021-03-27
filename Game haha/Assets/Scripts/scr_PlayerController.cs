@@ -19,10 +19,10 @@ public class scr_PlayerController : MonoBehaviour
     Rigidbody2D playerRigidbody;
 
     //STATS
-    float critChance = 0.2f;
-    float speedModifier = 1f;
+    float critChance = 0.05f; // BASE CRIT CHANCE 5% (TBD)
+    float speedModifier = 1f; // BASE SPEED MOD 1
 
-    float cooldownReduction = 0f; // NOT YET IMPLEMENTED
+    float cooldownReduction = 0f; // NOT YET IMPLEMENTED ~
     float attackSpeed = 1f; // 1 = BASE ATTACK SPEED ~ 1.2 = 20% INCREASED ATTACK SPEED
 
 

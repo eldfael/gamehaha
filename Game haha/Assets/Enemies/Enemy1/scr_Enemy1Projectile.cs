@@ -2,32 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_AttackAbility1Projectile : MonoBehaviour
+public class scr_Enemy1Projectile : MonoBehaviour
 {
-
-    Rigidbody2D projectileRigidbody;
-    bool created = false;
-    
     Vector2 direction;
     int damage;
-    float critChance;
+    bool created = false;
 
-    float speed = 80f;
-    float duration = 0.25f;
-    float durationTimer = 0;
+    float speed = 40f;
+    float duration = 0.7f;
+    float durationTimer = 0f;
 
-    List<GameObject> hits = new List<GameObject>();
     ContactFilter2D filter;
     List<Collider2D> collisions = new List<Collider2D>();
+    Rigidbody2D projectileRigidbody;
 
     void Start()
     {
+        speed = Random.Range(speed - 5f, speed + 5f);
         filter.useTriggers = true;
         projectileRigidbody = GetComponent<Rigidbody2D>();
     }
 
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (created)
         {
@@ -48,18 +44,11 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
 
                 collisions.ForEach(delegate (Collider2D c)
                 {
-                    if (c.CompareTag("Enemy") && !hits.Contains(c.gameObject))
+                    if (c.CompareTag("Player"))
                     {
-                        if (Random.Range(0f, 1f) + critChance > 1)
-                        {
-                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage + (int)(damage * 0.5f), true);
-                        }
-                        else
-                        {
-                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage+Random.Range((int)(-damage*0.1f),(int)(1+damage*0.1f)), false);
-                        }
+                        //DAMAGE PLAYER FOR NOW JUST DESTROY
+                        Destroy(gameObject);
                         
-                        hits.Add(c.gameObject);
                     }
                     if (c.CompareTag("Wall"))
                     {
@@ -70,17 +59,14 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
 
 
             }
+
         }
     }
 
-
-    public void OnCreate(Vector2 _direction, int _damage, float _critChance)
+    public void OnCreate(Vector2 _direction, int _damage)
     {
-        if(_direction != Vector2.zero) { direction = _direction; } else { direction = new Vector2(0, 1); }
+        direction = _direction;
         damage = _damage;
-        critChance = _critChance;
         created = true;
     }
-
-
 }

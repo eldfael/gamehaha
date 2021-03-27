@@ -32,8 +32,7 @@ public class scr_SkillAbility2Controller : MonoBehaviour, Ability
                 durationtimer = 0; 
                 //playerController.AddMovementSpeed(-0.5f); 
                 playerController.AddAttackSpeed(-0.5f);
-                playerController.AddCritChance(-2f);
-                Debug.Log("Speed DOWN"); 
+                playerController.AddCritChance(-2f); 
             }
         }
     }
@@ -46,7 +45,6 @@ public class scr_SkillAbility2Controller : MonoBehaviour, Ability
             //playerController.AddMovementSpeed(0.5f);
             playerController.AddAttackSpeed(0.5f);
             playerController.AddCritChance(2f);
-            Debug.Log("Speed UP");
         }
     }
     public float GetCooldown()
