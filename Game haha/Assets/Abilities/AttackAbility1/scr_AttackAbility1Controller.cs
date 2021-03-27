@@ -29,7 +29,7 @@ public class scr_AttackAbility1Controller : MonoBehaviour, Ability
     {
         if (cooldownTimer <= 0)
         {
-            cooldownTimer = cooldown;
+            cooldownTimer = cooldown / playerController.GetAttackSpeed();
             mousePos = playerController.GetMousePositionFromPlayer();
             GameObject newProjectile = Instantiate(projectile,
                 new Vector2(

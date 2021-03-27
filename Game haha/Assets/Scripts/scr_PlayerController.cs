@@ -22,6 +22,9 @@ public class scr_PlayerController : MonoBehaviour
     float critChance = 0.2f;
     float speedModifier = 1f;
 
+    float cooldownReduction = 0f; // NOT YET IMPLEMENTED
+    float attackSpeed = 1f; // 1 = BASE ATTACK SPEED ~ 1.2 = 20% INCREASED ATTACK SPEED
+
 
     void Start()
     {
@@ -85,10 +88,19 @@ public class scr_PlayerController : MonoBehaviour
         return critChance;
     }
 
-    public void AddSpeed(float speedChange)
+    public void AddMovementSpeed(float movementSpeedChange)
     {
-        speedModifier += speedChange;
+        speedModifier += movementSpeedChange;
     }
 
+    public void AddAttackSpeed(float attackSpeedChange)
+    {
+        attackSpeed += attackSpeedChange;
+    }
+
+    public float GetAttackSpeed()
+    {
+        return attackSpeed;
+    }
 
 }

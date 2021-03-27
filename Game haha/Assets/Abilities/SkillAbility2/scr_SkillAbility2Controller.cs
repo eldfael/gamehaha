@@ -27,7 +27,7 @@ public class scr_SkillAbility2Controller : MonoBehaviour, Ability
         if (durationtimer > 0)
         {
             durationtimer -= Time.fixedDeltaTime;
-            if (durationtimer <= 0) { durationtimer = 0; playerController.AddSpeed(-0.5f); Debug.Log("Speed DOWN"); }
+            if (durationtimer <= 0) { durationtimer = 0; playerController.AddMovementSpeed(-0.5f); playerController.AddAttackSpeed(-0.5f); Debug.Log("Speed DOWN"); }
         }
     }
     public void UseAbility()
@@ -36,7 +36,8 @@ public class scr_SkillAbility2Controller : MonoBehaviour, Ability
         {
             cooldowntimer = cooldown;
             durationtimer = duration;
-            playerController.AddSpeed(0.5f);
+            playerController.AddMovementSpeed(0.5f);
+            playerController.AddAttackSpeed(0.5f);
             Debug.Log("Speed UP");
         }
     }
