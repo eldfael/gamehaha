@@ -8,7 +8,7 @@ public class scr_ScarecrowController : MonoBehaviour, Enemy
     public GameObject damageText;
     int damageSortingOrder = 0;
 
-    public void TakeDamage(float damage, bool crit)
+    public void TakeDamage(int damage, bool crit)
     {
         
         GameObject _damageText = Instantiate(damageText, new Vector3(transform.position.x,transform.position.y+2f,damageSortingOrder),Quaternion.identity);

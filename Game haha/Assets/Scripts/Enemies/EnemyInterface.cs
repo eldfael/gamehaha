@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Enemy
 {
-    void TakeDamage(float damage, bool crit);
+    void TakeDamage(int damage, bool crit);
 }
 
 

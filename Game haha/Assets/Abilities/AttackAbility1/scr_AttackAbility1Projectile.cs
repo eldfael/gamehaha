@@ -9,7 +9,7 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
     bool created = false;
     
     Vector2 direction;
-    float damage;
+    int damage;
     float critChance;
 
     float speed = 80f;
@@ -73,7 +73,7 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
     }
 
 
-    public void OnCreate(Vector2 _direction, float _damage, float _critChance)
+    public void OnCreate(Vector2 _direction, int _damage, float _critChance)
     {
         if(_direction != Vector2.zero) { direction = _direction; } else { direction = new Vector2(0, 1); }
         damage = _damage;

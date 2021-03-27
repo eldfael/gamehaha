@@ -37,7 +37,7 @@ public class scr_AttackAbility1Controller : MonoBehaviour, Ability
                     playerController.transform.position.y + mousePos.normalized.y*0.5f),
                     Quaternion.identity);
 
-            newProjectile.GetComponent<scr_AttackAbility1Projectile>().OnCreate(mousePos.normalized, 10f, playerController.GetCritChance());
+            newProjectile.GetComponent<scr_AttackAbility1Projectile>().OnCreate(mousePos.normalized, 10, playerController.GetCritChance());
             newProjectile.GetComponent<Transform>().Rotate(0, 0, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - 90f, Space.Self);
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class scr_PlayerController : MonoBehaviour
 {
     //CONSTANTS
-    float FIXEDPLAYERSPEED = 28.0f;
+    float FIXEDPLAYERSPEED = 36.0f;
 
     //INPUT VARIABLES
     Vector2 moveDirection;

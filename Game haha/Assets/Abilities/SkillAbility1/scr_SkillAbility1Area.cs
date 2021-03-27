@@ -5,7 +5,7 @@ using UnityEngine;
 public class scr_SkillAbility1Area : MonoBehaviour
 {
     bool created = false;
-    float damage;
+    int damage;
     float duration = 0.15f;
     float durationtimer = -0.2f;
     int maxticks = 4;
@@ -70,7 +70,7 @@ public class scr_SkillAbility1Area : MonoBehaviour
         }
     }
 
-    public void OnCreate(float _damage, float _critChance)
+    public void OnCreate(int _damage, float _critChance)
     {
         damage = _damage;
         critChance = _critChance;
