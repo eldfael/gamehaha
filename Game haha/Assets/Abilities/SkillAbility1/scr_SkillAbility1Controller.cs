@@ -9,7 +9,7 @@ public class scr_SkillAbility1Controller : MonoBehaviour, Ability
     scr_PlayerController playerController;
     public GameObject area;
 
-    float cooldown = 4f;
+    float cooldown = 10f;
     float cooldowntimer = 0f;
 
     private void Start()

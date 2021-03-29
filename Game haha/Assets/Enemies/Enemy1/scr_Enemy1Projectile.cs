@@ -8,8 +8,8 @@ public class scr_Enemy1Projectile : MonoBehaviour
     int damage;
     bool created = false;
 
-    float speed = 40f;
-    float duration = 0.7f;
+    float speed = 50f;
+    float duration = 1.5f;
     float durationTimer = 0f;
 
     ContactFilter2D filter;
@@ -18,7 +18,7 @@ public class scr_Enemy1Projectile : MonoBehaviour
 
     void Start()
     {
-        speed = Random.Range(speed - 5f, speed + 5f);
+        // speed = Random.Range(speed - 5f, speed + 5f);
         filter.useTriggers = true;
         projectileRigidbody = GetComponent<Rigidbody2D>();
     }

@@ -12,7 +12,7 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
     int damage;
     float critChance;
 
-    float speed = 80f;
+    float speed = 100f;
     float duration = 0.25f;
     float durationTimer = 0;
 

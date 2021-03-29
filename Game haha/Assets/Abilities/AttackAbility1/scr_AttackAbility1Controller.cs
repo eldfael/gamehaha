@@ -8,7 +8,7 @@ public class scr_AttackAbility1Controller : MonoBehaviour, Ability
     public GameObject projectile;
     Vector2 mousePos;
     
-    float cooldown = 0.3f;
+    float cooldown = 0.75f;
     float cooldownTimer = 0f;
 
     void Start()

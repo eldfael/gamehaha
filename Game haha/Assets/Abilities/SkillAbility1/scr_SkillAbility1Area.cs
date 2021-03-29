@@ -6,9 +6,9 @@ public class scr_SkillAbility1Area : MonoBehaviour
 {
     bool created = false;
     int damage;
-    float duration = 0.15f;
-    float durationtimer = -0.2f;
-    int maxticks = 4;
+    float duration = 0.2f;
+    float durationtimer = -0.4f;
+    int maxticks = 3;
     int tickcounter = 0;
     bool active = false;
     float critChance;
