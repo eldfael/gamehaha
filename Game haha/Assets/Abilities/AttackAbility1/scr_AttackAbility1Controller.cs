@@ -7,8 +7,9 @@ public class scr_AttackAbility1Controller : MonoBehaviour, Ability
     scr_PlayerController playerController;
     public GameObject projectile;
     Vector2 mousePos;
+    float SPRITE_ROTATION = 0f;
     
-    float cooldown = 0.75f;
+    float cooldown = 0.4f;
     float cooldownTimer = 0f;
 
     void Start()
@@ -38,7 +39,7 @@ public class scr_AttackAbility1Controller : MonoBehaviour, Ability
                     Quaternion.identity);
 
             newProjectile.GetComponent<scr_AttackAbility1Projectile>().OnCreate(mousePos.normalized, 10, playerController.GetCritChance());
-            newProjectile.GetComponent<Transform>().Rotate(0, 0, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - 90f, Space.Self);
+            newProjectile.GetComponent<Transform>().Rotate(0, 0, Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - SPRITE_ROTATION, Space.Self);
         }
     }
 

@@ -13,7 +13,7 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
     float critChance;
 
     float speed = 100f;
-    float duration = 0.25f;
+    float duration = 2f;
     float durationTimer = 0;
 
     List<GameObject> hits = new List<GameObject>();
@@ -41,7 +41,7 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            Physics2D.OverlapCollider(GetComponent<BoxCollider2D>(), filter, collisions);
+            Physics2D.OverlapCollider(GetComponent<CircleCollider2D>(), filter, collisions);
 
             if (collisions.Count > 0)
             {
@@ -52,23 +52,32 @@ public class scr_AttackAbility1Projectile : MonoBehaviour
                     {
                         if (Random.Range(0f, 1f) + critChance > 1)
                         {
-                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage + (int)(damage * 0.5f), true);
+                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage + (int)(damage * 0.5f), Vector2.zero);
                         }
                         else
                         {
-                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage+Random.Range((int)(-damage*0.1f),(int)(1+damage*0.1f)), false);
+                            c.gameObject.GetComponent<Enemy>().TakeDamage(damage+Random.Range((int)(-damage*0.1f),(int)(1+damage*0.1f)), Vector2.zero);
                         }
                         
                         hits.Add(c.gameObject);
-                    }
+                    }                   
+                });
+
+
+            }
+
+            Physics2D.OverlapCollider(GetComponent<BoxCollider2D>(), filter, collisions);
+
+            if (collisions.Count > 0)
+            {
+                collisions.ForEach(delegate (Collider2D c)
+                {
                     if (c.CompareTag("Wall"))
                     {
                         Destroy(gameObject);
                     }
-
                 });
-
-
+                
             }
         }
     }

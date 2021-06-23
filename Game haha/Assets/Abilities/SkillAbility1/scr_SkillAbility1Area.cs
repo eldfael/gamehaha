@@ -50,12 +50,12 @@ public class scr_SkillAbility1Area : MonoBehaviour
                         {
                             if (Random.Range(0f,1f)+critChance > 1)
                             {
-                                c.gameObject.GetComponent<Enemy>().TakeDamage(damage + (int)(damage * 0.5f), true);
+                                c.gameObject.GetComponent<Enemy>().TakeDamage(damage + (int)(damage * 0.5f), Vector2.zero);
 
                             }
                             else
                             {
-                                c.gameObject.GetComponent<Enemy>().TakeDamage(damage + Random.Range((int)(-damage * 0.1f), (int)(1 + damage * 0.1f)), false);
+                                c.gameObject.GetComponent<Enemy>().TakeDamage(damage + Random.Range((int)(-damage * 0.1f), (int)(1 + damage * 0.1f)), Vector2.zero);
                             }
                         }
 

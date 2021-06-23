@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Enemy
 {
-    void TakeDamage(int damage, bool crit);
+    void TakeDamage(int damage, Vector2 direction);
 }
 
 
